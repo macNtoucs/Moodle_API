@@ -103,7 +103,7 @@
 
 /*
  取得檔案夾內容
- 參數: dir		(/moodle課號/考古題 課程講義 作業 三者其中之一)
+ 參數: dir		(/moodle課號/[考古題 課程講義 作業] 三者其中之一)
  ex: getFilesFolder_InDir:@"/19367/考古題"
  */
 +(NSArray *)getFilesFolder_InDir:(NSString *)dir;
@@ -111,8 +111,16 @@
 
 /*
  下載檔案並回傳檔案路徑
+ 參數: dir		(/moodle課號/考古題 課程講義 作業 三者其中之一)
+    FileName (檔案名稱，由getFilesFolder_InDir所提供的array得到)
+ 
+ debugMSG: 若回傳Error_dir_or_FileName則表示參數有誤
+ 
+ ex: GetPathOfDownloadFiles_fileName:@"_10_JavaScript_for_Ajax_-_example.rar" 
+                             FromDir:@"/19367/課程講義"
  */
 
-+(NSString * ) GetPathOfDownloadFiles_fileName:(NSString *)FileName andCourseID:(NSString *)cosID;
++(NSString * ) GetPathOfDownloadFiles_fileName:(NSString *)FileName
+                                       FromDir:(NSString *)dir;
 
 @end

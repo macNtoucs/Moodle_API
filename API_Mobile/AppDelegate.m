@@ -40,8 +40,7 @@
     NSDictionary *MoodleID_Dic = [Moodle_API GetMoodleID_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
     NSLog(@"%@",MoodleID_Dic);*/
     NSArray * arr = [Moodle_API getFilesFolder_InDir:@"/19367/課程講義"];
-     [Moodle_API GetPathOfDownloadFiles_fileName:@"JavaScriptforAjax.pptx" andCourseID:@"19367"];
-    NSLog(@"%@",arr);
+     [Moodle_API GetPathOfDownloadFiles_fileName:@"_10_JavaScript_for_Ajax_-_example.rar" FromDir:@"/19367/課程講義"];
     return YES;
 }
 

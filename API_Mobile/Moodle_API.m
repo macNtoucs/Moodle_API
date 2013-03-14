@@ -186,8 +186,8 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
     }
     NSMutableArray * result_Inventory = [NSMutableArray new];
     for (NSString *s in inventory){
-       /* s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        s = [s stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+       /* s = [s stringByReplacingOccurrencesOfString:@"_" withString:@""];
         if ([s intValue]>=10) s = [s substringFromIndex:2];
         else if ([s intValue]!=0)s = [s substringFromIndex:1];*/
         if (![s isEqualToString:@"\n"]&&! [s isEqualToString:@""])

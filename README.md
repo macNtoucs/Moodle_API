@@ -17,7 +17,7 @@ Moodle_API
 
  +(NSDictionary *)GetCourse_AndUseToken:(NSString*)token;
 
- ##回傳課程資訊
+##回傳課程資訊
  參數: token:識別碼
       cosid:課程課號
       clsid:開課班號(班別)
@@ -98,3 +98,9 @@ Moodle_API
 
 +(NSString * ) GetPathOfDownloadFiles_fileName:(NSString *)FileName
                                        FromDir:(NSString *)dir;
+
+
+##刪除所有下載的檔案
+ 正常刪除將回傳true
+ 
++(BOOL)CleanUpAllTheFiles;

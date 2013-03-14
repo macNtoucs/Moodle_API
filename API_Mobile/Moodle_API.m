@@ -220,4 +220,13 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 
 }
 
++(BOOL)CleanUpAllTheFiles{
+    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *manager = [NSFileManager new];
+    NSError *err;
+    return[manager removeItemAtPath:documentsDirectory error:&err];
+    
+}
+
 @end

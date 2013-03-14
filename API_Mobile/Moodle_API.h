@@ -123,4 +123,10 @@
 +(NSString * ) GetPathOfDownloadFiles_fileName:(NSString *)FileName
                                        FromDir:(NSString *)dir;
 
+
+/*刪除所有下載的檔案
+ 正常刪除將回傳true
+ */
++(BOOL)CleanUpAllTheFiles;
+
 @end

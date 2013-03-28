@@ -42,8 +42,8 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 +(NSDictionary *)queryFunctionType:(NSString *) type PostString:(NSString *)finailPost{
     // get response
     NSHTTPURLResponse *urlResponse = nil;
-    NSError *error = [[NSError alloc] init];
-    NSMutableURLRequest * jsonQuest = [NSMutableURLRequest new];
+    NSError *error = [[[NSError alloc] init]autorelease];
+    NSMutableURLRequest * jsonQuest = [[NSMutableURLRequest new]autorelease];
     NSString * queryURL = [NSString stringWithFormat:@"http://140.121.197.103:2223/iNTOUServer/%@.do",type];
     [jsonQuest setURL:[NSURL URLWithString:queryURL]];
     [jsonQuest setHTTPMethod:@"POST"];
@@ -102,8 +102,8 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
  }
 
 +(NSDictionary *)GetCourse_AndUseToken:(NSString*)token{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid", nil];
-    NSString *jsonRequest = [postDic JSONRepresentation];
+    NSDictionary *postDic = [[[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid", nil]autorelease];
+    NSString *jsonRequest = [[postDic JSONRepresentation]autorelease];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     
     NSDictionary *dictionary = [self queryFunctionType:@"getCourse" PostString:finailPost];
@@ -114,7 +114,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 
 
 +(NSDictionary* )GetCourseInfo_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil];
+    NSDictionary *postDic = [[[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil]autorelease];
     NSString *jsonRequest = [postDic JSONRepresentation];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"CourseInfo" PostString:finailPost];
@@ -123,11 +123,11 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSDictionary* )GetMoodleInfo_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary * Jsonlist =[[NSDictionary alloc]initWithObjectsAndKeys:cosID,@"cosid",clsID,@"clsid",nil];
+    NSDictionary * Jsonlist =[[[NSDictionary alloc]initWithObjectsAndKeys:cosID,@"cosid",clsID,@"clsid",nil]autorelease];
     NSString * jsonArray = [Jsonlist JSONRepresentation];
     NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",Jsonlist,@"list",nil];
     NSString *const_jsonRequest = [postDic JSONRepresentation];
-    NSMutableString *jsonRequest = [[NSMutableString alloc]initWithString:const_jsonRequest];
+    NSMutableString *jsonRequest = [[[NSMutableString alloc]initWithString:const_jsonRequest]autorelease];
     
     [jsonRequest insertString:@"[" atIndex:8];
     [jsonRequest insertString:@"]" atIndex:[jsonRequest rangeOfString:@"stid"].location-2];
@@ -138,7 +138,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSDictionary* )GetGrade_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil];
+    NSDictionary *postDic = [[[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil]autorelease];
     NSString *jsonRequest = [postDic JSONRepresentation];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"getGrade" PostString:finailPost];
@@ -146,7 +146,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSDictionary* )GetMoodleID_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil];
+    NSDictionary *postDic = [[[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil]autorelease];
     NSString *jsonRequest = [postDic JSONRepresentation];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"getMoodleID" PostString:finailPost];
@@ -154,7 +154,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSDictionary* )MoodleID_AndUseToken:(NSString *)token module:(NSString *)module moodleID:(NSString *)mid courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",module,@"module",mid,@"mid",cosID,@"cosid",clsID,@"clsid",nil];
+    NSDictionary *postDic = [[[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",module,@"module",mid,@"mid",cosID,@"cosid",clsID,@"clsid",nil]autorelease];
     NSString *jsonRequest = [postDic JSONRepresentation];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"MoodleInfo" PostString:finailPost];
@@ -164,8 +164,8 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 
 +(NSArray* )getFilesFolder_InDir:(NSString *)dir{
     NSHTTPURLResponse *urlResponse = nil;
-    NSError *error = [[NSError alloc] init];
-    NSMutableURLRequest * query = [NSMutableURLRequest new];
+    NSError *error = [[[NSError alloc] init]autorelease];
+    NSMutableURLRequest * query = [[NSMutableURLRequest new]autorelease];
     NSString * queryURL = [NSString stringWithFormat:@"http://moodle.ntou.edu.tw/m/filestring.php"];
     [query setURL:[NSURL URLWithString:queryURL]];
     [query setHTTPMethod:@"POST"];

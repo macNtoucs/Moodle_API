@@ -22,24 +22,33 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+  
     NSDictionary * loginDic =  [Moodle_API Login:@"09957037" andPassword:@"L124631945"];
     NSString * token = [loginDic objectForKey:@"token"];
-    /*NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
-    NSLog(@"%@",courseDic);
     
-    NSDictionary *courseInfoDic = [Moodle_API GetCourseInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];
-    NSLog(@"%@",courseInfoDic);*/
     
-    NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];
+    
+   NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
     NSLog(@"%@",moodleInfoDic);
     
-  /*  NSDictionary *gradeDic = [Moodle_API GetGrade_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
-    NSLog(@"%@",gradeDic);
     
-    NSDictionary *MoodleID_Dic = [Moodle_API GetMoodleID_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
+    NSLog(@"%@",[Moodle_API MoodleID_AndUseToken:token module:@"resource" moodleID:@"83187" courseID:@"M5701K59" classID:@"A"]);
+    
+    
+    /*NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
+    NSLog(@"%@",courseDic);*/
+    
+   /* NSDictionary *courseInfoDic = [Moodle_API GetCourseInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];
+    NSLog(@"%@",courseInfoDic);*/
+    
+    /*NSDictionary *gradeDic = [Moodle_API GetGrade_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
+    NSLog(@"%@",gradeDic);
+    */
+    /*
+    NSDictionary *MoodleID_Dic = [Moodle_API GetMoodleID_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
     NSLog(@"%@",MoodleID_Dic);
-    NSArray * arr = [Moodle_API getFilesFolder_InDir:@"/21556/課程講義"];*/
+     */
+   /* NSArray * arr = [Moodle_API getFilesFolder_InDir:@"/21556/課程講義"];*/
     // [Moodle_API GetPathOfDownloadFiles_fileName:@"_10_JavaScript_for_Ajax_-_example.rar" FromDir:@"/19367/課程講義"];
    // [Moodle_API CleanUpAllTheFiles];
     return YES;

@@ -46,8 +46,10 @@
 /*
  回傳moodle最新消息
  參數: token:識別碼
- cosid:課程課號
- clsid:開課班號(班別)
+      list:{
+            cosid:課程課號
+            clsid:開課班號(班別)
+            }
  回傳範例:
  {"list":[{"infos":[{"module":"resource","title":"WBSE Homework 3","url":"http://moodle.ntou.edu.tw/mod/resource/view.php?id=75192"},{"module":"assignment","title":"WBSE Homework 3","url":"http://moodle.ntou.edu.tw/mod/assignment/view.php?id=75193"},{"module":"resource","title":"第三次作業上傳位址","url":"http://moodle.ntou.edu.tw/mod/resource/view.php?id=75194"},{"module":"resource","title":"下週考試地點：INS B14","url":"http://moodle.ntou.edu.tw/mod/resource/view.php?id=75929"}],"cosid":"B5704R2A","course_name":"1011_網際服務軟體工程A","clsid":"A"}]}
  

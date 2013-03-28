@@ -123,8 +123,15 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSDictionary* )GetMoodleInfo_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",cosID,@"cosid",clsID,@"clsid",nil];
-    NSString *jsonRequest = [postDic JSONRepresentation];
+    NSDictionary * Jsonlist =[[NSDictionary alloc]initWithObjectsAndKeys:cosID,@"cosid",clsID,@"clsid",nil];
+    NSString * jsonArray = [Jsonlist JSONRepresentation];
+    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",Jsonlist,@"list",nil];
+    NSString *const_jsonRequest = [postDic JSONRepresentation];
+    NSMutableString *jsonRequest = [[NSMutableString alloc]initWithString:const_jsonRequest];
+    
+    [jsonRequest insertString:@"[" atIndex:8];
+    [jsonRequest insertString:@"]" atIndex:[jsonRequest rangeOfString:@"stid"].location-2];
+    
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"getMoodleInfo" PostString:finailPost];
     return dictionary;

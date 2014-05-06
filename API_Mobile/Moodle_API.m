@@ -101,6 +101,17 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
     return dictionary;
 }
 
++(NSDictionary *)GetCourseGrade_AndUseToken:(NSString *)token{
+   NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid", nil];
+   NSString *jsonRequest = [postDic JSONRepresentation];
+    NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
+    
+    NSDictionary *dictionary = [self queryFunctionType:@"getCourseGrade" PostString:finailPost];
+    return dictionary;
+}
+
+
+
 +(NSDictionary *)GetCourse_AndUseToken:(NSString*)token{
     NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid", nil];
     NSString *jsonRequest = [postDic JSONRepresentation];
@@ -162,10 +173,10 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 }
 
 +(NSArray* )getFilesFolder_InDir:(NSString *)dir{
-   // dir=@"/21464/課程講義";
+    // dir=@"/21464/課程講義";
     NSHTTPURLResponse *urlResponse = nil;
     NSError * error;
-   NSString * queryURL = [NSString stringWithFormat:@"http://moodle.ntou.edu.tw/m/new_filestring.php?dir=%@",dir];
+    NSString * queryURL = [NSString stringWithFormat:@"http://moodle.ntou.edu.tw/m/new_filestring.php?dir=%@",dir];
     NSString *encodeUrl = [queryURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest * query = [[NSMutableURLRequest new]autorelease];
     [query setURL:[NSURL URLWithString:encodeUrl]];
@@ -185,7 +196,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
     }
     NSArray * dic_val = [dictionary allValues];
     NSArray * inventory = [dic_val objectAtIndex:0];
-   
+    
     for (id pair in inventory){
         [result_Inventory addObject:[pair objectForKey:@"item"]];
     }

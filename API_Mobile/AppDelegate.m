@@ -26,16 +26,18 @@
     NSDictionary * loginDic =  [Moodle_API Login:@"09957037" andPassword:@"L124631945"];
     NSString * token = [loginDic objectForKey:@"token"];
     
+    NSDictionary *allGrade = [Moodle_API GetCourseGrade_AndUseToken:token];
+    NSLog(@"%@",allGrade);
     
-    
-   NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
+  /* NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
     NSLog(@"%@",moodleInfoDic);
     
     
     NSLog(@"%@",[Moodle_API MoodleID_AndUseToken:token module:@"resource" moodleID:@"83187" courseID:@"M5701K59" classID:@"A"]);
     
+    */
     
-    /*NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
+  /*  NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
     NSLog(@"%@",courseDic);*/
     
    /* NSDictionary *courseInfoDic = [Moodle_API GetCourseInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];

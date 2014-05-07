@@ -25,6 +25,7 @@
   
     NSDictionary * loginDic =  [Moodle_API Login:@"09957037" andPassword:@"L124631945"];
     NSString * token = [loginDic objectForKey:@"token"];
+    NSLog(@"toekn = %@",token);
     
     NSDictionary *allGrade = [Moodle_API GetCourseGrade_AndUseToken:token];
     NSLog(@"%@",allGrade);
@@ -37,7 +38,7 @@
     
     */
     
-  /*  NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
+    /*NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
     NSLog(@"%@",courseDic);*/
     
    /* NSDictionary *courseInfoDic = [Moodle_API GetCourseInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];

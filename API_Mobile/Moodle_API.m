@@ -92,6 +92,8 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
     NSString *jsonRequest = [postDic1 JSONRepresentation];
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     dictionary = [self queryFunctionType:@"login" PostString:finailPost];
+    
+    NSLog(@"%@",finailPost);
     if([[dictionary allValues]count]>1) {
         NSLog(@"登入成功");
     }

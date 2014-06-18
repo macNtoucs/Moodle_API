@@ -27,24 +27,26 @@
     NSString * token = [loginDic objectForKey:@"token"];
     NSLog(@"toekn = %@",token);
     
-    NSDictionary *allGrade = [Moodle_API GetCourseGrade_AndUseToken:token];
-    NSLog(@"%@",allGrade);
     
-  /* NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
+  
+   /* NSDictionary *allGrade = [Moodle_API GetCourseGrade_AndUseToken:token];
+    NSLog(@"%@",allGrade);*/
+    
+  NSDictionary *moodleInfoDic = [Moodle_API GetMoodleInfo_AndUseToken:token courseID:@"M5701K59" classID:@"A"];
     NSLog(@"%@",moodleInfoDic);
     
     
-    NSLog(@"%@",[Moodle_API MoodleID_AndUseToken:token module:@"resource" moodleID:@"83187" courseID:@"M5701K59" classID:@"A"]);
+   /* NSLog(@"%@",[Moodle_API MoodleID_AndUseToken:token module:@"resource" moodleID:@"83187" courseID:@"M5701K59" classID:@"A"]);
     
-    */
+   */
     
     /*NSDictionary * courseDic = [Moodle_API GetCourse_AndUseToken:token];
-    NSLog(@"%@",courseDic);*/
-    
+    NSLog(@"%@",courseDic);
+    */
    /* NSDictionary *courseInfoDic = [Moodle_API GetCourseInfo_AndUseToken:token courseID:@"B57031GR" classID:@"A"];
     NSLog(@"%@",courseInfoDic);*/
-    
-    /*NSDictionary *gradeDic = [Moodle_API GetGrade_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
+  /*
+    NSDictionary *gradeDic = [Moodle_API GetGrade_AndUseToken:token courseID:@"M5701P9D" classID:@"A"];
     NSLog(@"%@",gradeDic);
     */
     /*

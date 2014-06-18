@@ -53,6 +53,7 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
                                                  returningResponse:&urlResponse
                                                              error:&error
                             ];
+    NSString *resString = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
     
     return dictionary;
@@ -137,12 +138,13 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
 
 +(NSDictionary* )GetMoodleInfo_AndUseToken:(NSString *)token courseID:(NSString *)cosID classID:(NSString *)clsID{
     NSDictionary * Jsonlist =[[NSDictionary alloc]initWithObjectsAndKeys:cosID,@"cosid",clsID,@"clsid",nil];
-    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",Jsonlist,@"list",nil];
-    NSString *const_jsonRequest = [postDic JSONRepresentation];
+    NSDictionary *postDic = [[NSDictionary alloc]initWithObjectsAndKeys:token,@"stid",[NSArray arrayWithObject:Jsonlist] ,@"list",nil];
+   
+    NSString *const_jsonRequest = [postDic JSONRepresentation];    
     NSMutableString *jsonRequest = [[NSMutableString alloc]initWithString:const_jsonRequest];
-    
-    [jsonRequest insertString:@"[" atIndex:8];
-    [jsonRequest insertString:@"]" atIndex:[jsonRequest rangeOfString:@"stid"].location-2];
+   
+  /*  [jsonRequest insertString:@"[" atIndex:8];
+    [jsonRequest insertString:@"]" atIndex:[jsonRequest rangeOfString:@"stid"].location-2];*/
     
     NSString *finailPost = [NSString stringWithFormat:@"json=%@",jsonRequest];
     NSDictionary *dictionary = [self queryFunctionType:@"getMoodleInfo" PostString:finailPost];
@@ -238,5 +240,6 @@ static Byte iv[] = {1,2,3,4,5,6,7,8};
     return[manager removeItemAtPath:documentsDirectory error:&err];
     
 }
+
 
 @end
